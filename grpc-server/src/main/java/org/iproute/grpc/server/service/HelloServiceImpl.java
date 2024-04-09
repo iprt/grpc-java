@@ -2,6 +2,7 @@ package org.iproute.grpc.server.service;
 
 import com.google.protobuf.ProtocolStringList;
 import io.grpc.stub.StreamObserver;
+import lombok.extern.slf4j.Slf4j;
 import org.iproute.grpc.api.HelloProto;
 import org.iproute.grpc.api.HelloServiceGrpc;
 
@@ -10,6 +11,7 @@ import org.iproute.grpc.api.HelloServiceGrpc;
  *
  * @author zhuzhenjie
  */
+@Slf4j
 public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
 
     @Override
@@ -17,9 +19,8 @@ public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
 
         // 1. 接收client的请求参数
         String name = request.getName();
-
         // 2. 业务处理
-        System.out.println("name = " + name);
+        log.info("接收到客户端 request | request.name = {}", name);
 
         // 3.1 封装响应
         HelloProto.HelloResponse.Builder builder = HelloProto.HelloResponse.newBuilder();
@@ -39,19 +40,15 @@ public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
         ProtocolStringList nameList = request.getNameList();
 
         for (String name : nameList) {
-            System.out.println("name = " + name);
+            log.info("接收到客户客户端 request.nameList | request.name = {}", name);
         }
 
-        System.out.println("HelloServiceImpl.hello1");
 
         HelloProto.HelloResponse1.Builder builder = HelloProto.HelloResponse1.newBuilder();
-
         builder.setResult("hello1 method invoke ok");
-
         HelloProto.HelloResponse1 response1 = builder.build();
 
         responseObserver.onNext(response1);
-
         responseObserver.onCompleted();
 
     }
@@ -61,7 +58,7 @@ public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
         // 1. 接收参数
         String name = request.getName();
         // 2. 处理业务
-        System.out.println("name = " + name);
+        log.info("client <===> server-stream | name = {}", name);
         // 3. 根据业务处理的结果，提供响应
         for (int i = 0; i < 10; i++) {
             HelloProto.HelloResponse.Builder builder = HelloProto.HelloResponse.newBuilder();
@@ -91,7 +88,7 @@ public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
             public void onNext(HelloProto.HelloRequest request) {
                 String name = request.getName();
                 nameBuilder.append(name);
-                System.out.println("接收到客户端发送的一条消息: " + request.getName());
+                log.info("接收到客户端发送的一条消息: {}", name);
             }
 
             @Override
@@ -102,7 +99,7 @@ public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
             public void onCompleted() {
                 // 客户端结束了
                 String name = nameBuilder.toString();
-                System.out.println("name = " + name);
+                log.info("客户端 onCompleted | name = {}", name);
 
                 HelloProto.HelloResponse.Builder builder = HelloProto.HelloResponse.newBuilder();
                 builder.setResult("cs2s method invoke ok");
@@ -121,8 +118,9 @@ public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
         return new StreamObserver<HelloProto.HelloRequest>() {
             @Override
             public void onNext(HelloProto.HelloRequest request) {
-                System.out.println("接受到client 提交的消息 " + request.getName());
-                responseObserver.onNext(HelloProto.HelloResponse.newBuilder().setResult("response " + request.getName() + " result ").build());
+                String name = request.getName();
+                log.info("接受到client 提交的消息 | name =  {}", name);
+                responseObserver.onNext(HelloProto.HelloResponse.newBuilder().setResult("response " + name + " result ").build());
             }
 
             @Override

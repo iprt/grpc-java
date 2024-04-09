@@ -5,6 +5,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import lombok.extern.slf4j.Slf4j;
 import org.iproute.grpc.api.TestProto;
 import org.iproute.grpc.api.TestServiceGrpc;
 
@@ -16,11 +17,12 @@ import java.util.concurrent.TimeUnit;
  *
  * @author zhuzhenjie
  */
+@Slf4j
 public class GrpcClient7 {
 
     public static void main(String[] args) {
 
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9000).usePlaintext().build();
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("127.0.0.1", 9000).usePlaintext().build();
 
         try {
             TestServiceGrpc.TestServiceFutureStub testServiceFutureStub = TestServiceGrpc.newFutureStub(channel);
@@ -33,7 +35,7 @@ public class GrpcClient7 {
             Futures.addCallback(future, new FutureCallback<TestProto.TestResponse>() {
                 @Override
                 public void onSuccess(TestProto.TestResponse result) {
-                    System.out.println("result.getResult() = " + result.getResult());
+                    log.info("result.getResult() = {}", result.getResult());
                 }
 
                 @Override
@@ -42,7 +44,7 @@ public class GrpcClient7 {
                 }
             }, Executors.newCachedThreadPool());
 
-            System.out.println("后续的操作。。。");
+            log.info("后续的操作。。。");
 
             channel.awaitTermination(12, TimeUnit.SECONDS);
 

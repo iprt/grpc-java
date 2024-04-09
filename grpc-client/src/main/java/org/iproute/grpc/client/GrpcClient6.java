@@ -3,6 +3,7 @@ package org.iproute.grpc.client;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
+import lombok.extern.slf4j.Slf4j;
 import org.iproute.grpc.api.HelloProto;
 import org.iproute.grpc.api.HelloServiceGrpc;
 
@@ -13,10 +14,11 @@ import java.util.concurrent.TimeUnit;
  *
  * @author zhuzhenjie
  */
+@Slf4j
 public class GrpcClient6 {
 
     public static void main(String[] args) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9000).usePlaintext().build();
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("127.0.0.1", 9000).usePlaintext().build();
 
         try {
             HelloServiceGrpc.HelloServiceStub helloServiceStub = HelloServiceGrpc.newStub(channel);
@@ -24,7 +26,7 @@ public class GrpcClient6 {
             StreamObserver<HelloProto.HelloRequest> helloRequestStreamObserver = helloServiceStub.cs2ss(new StreamObserver<HelloProto.HelloResponse>() {
                 @Override
                 public void onNext(HelloProto.HelloResponse response) {
-                    System.out.println("响应的结果 " + response.getResult());
+                    log.info("响应的结果 | result = {}", response.getResult());
                 }
 
                 @Override
@@ -34,7 +36,7 @@ public class GrpcClient6 {
 
                 @Override
                 public void onCompleted() {
-                    System.out.println("响应全部结束...");
+                    log.info("响应全部结束...");
                 }
             });
 

@@ -2,6 +2,7 @@ package org.iproute.grpc.client;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import lombok.extern.slf4j.Slf4j;
 import org.iproute.grpc.api.HelloProto;
 import org.iproute.grpc.api.HelloServiceGrpc;
 
@@ -12,6 +13,7 @@ import org.iproute.grpc.api.HelloServiceGrpc;
  *
  * @author zhuzhenjie
  */
+@Slf4j
 public class GrpcClient2 {
 
     public static void main(String[] args) {
@@ -29,8 +31,7 @@ public class GrpcClient2 {
 
             String result = response1.getResult();
 
-            System.out.println("result = " + result);
-
+            log.info("result = {}", result);
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {

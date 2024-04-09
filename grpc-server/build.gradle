@@ -4,5 +4,8 @@ plugins {
 
 dependencies {
     implementation project(":grpc-api")
+
+    compileOnly('org.projectlombok:lombok:1.18.28')
+    annotationProcessor('org.projectlombok:lombok:1.18.28')
 }
 

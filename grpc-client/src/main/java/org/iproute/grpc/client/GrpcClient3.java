@@ -2,6 +2,7 @@ package org.iproute.grpc.client;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import lombok.extern.slf4j.Slf4j;
 import org.iproute.grpc.api.HelloProto;
 import org.iproute.grpc.api.HelloServiceGrpc;
 
@@ -14,10 +15,11 @@ import java.util.Iterator;
  *
  * @author zhuzhenjie
  */
+@Slf4j
 public class GrpcClient3 {
     public static void main(String[] args) {
         // 1 创建通信的管道
-        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("localhost", 9000).usePlaintext().build();
+        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("127.0.0.1", 9000).usePlaintext().build();
 
         try {
             // 2. 获取代理对象 stub
@@ -35,7 +37,7 @@ public class GrpcClient3 {
 
             while (responseIterator.hasNext()) {
                 HelloProto.HelloResponse response = responseIterator.next();
-                System.out.println("response.getResult() = " + response.getResult());
+                log.info("response.getResult() = {}", response.getResult());
             }
 
         } catch (Exception e) {
