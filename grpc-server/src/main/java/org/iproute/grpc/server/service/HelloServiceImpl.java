@@ -1,4 +1,4 @@
-package org.iproute.grpc.service;
+package org.iproute.grpc.server.service;
 
 import com.google.protobuf.ProtocolStringList;
 import io.grpc.stub.StreamObserver;

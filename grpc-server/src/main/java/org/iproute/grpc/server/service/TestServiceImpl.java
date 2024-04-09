@@ -1,4 +1,4 @@
-package org.iproute.grpc.service;
+package org.iproute.grpc.server.service;
 
 import io.grpc.stub.StreamObserver;
 import org.iproute.grpc.api.TestProto;

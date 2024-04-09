@@ -1,9 +1,9 @@
-package org.iproute.grpc;
+package org.iproute.grpc.server;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import org.iproute.grpc.service.HelloServiceImpl;
-import org.iproute.grpc.service.TestServiceImpl;
+import org.iproute.grpc.server.service.HelloServiceImpl;
+import org.iproute.grpc.server.service.TestServiceImpl;
 
 import java.io.IOException;
 
