@@ -39,7 +39,7 @@ public class GrpcClient6 {
             });
 
             for (int i = 0; i < 10; i++) {
-                helloRequestStreamObserver.onNext(HelloProto.HelloRequest.newBuilder().setName("GrpcClient6 " + i).build());
+                helloRequestStreamObserver.onNext(HelloProto.HelloRequest.newBuilder().setName("client-stream <===> server-stream " + i).build());
             }
 
             // 主动告知结束

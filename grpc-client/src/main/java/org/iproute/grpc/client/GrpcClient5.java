@@ -47,7 +47,7 @@ public class GrpcClient5 {
 
             for (int i = 0; i < 10; i++) {
                 HelloProto.HelloRequest request = HelloProto.HelloRequest.newBuilder()
-                        .setName("GrpcClient5-" + i)
+                        .setName("client-stream  <===>  server " + i)
                         .build();
 
                 helloRequestStreamObserver.onNext(request);

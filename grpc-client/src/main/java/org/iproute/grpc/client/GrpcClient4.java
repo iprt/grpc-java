@@ -28,7 +28,7 @@ public class GrpcClient4 {
             // 异步回调
             helloServiceStub.c2ss(
                     HelloProto.HelloRequest.newBuilder()
-                            .setName("GrpcClient4")
+                            .setName("client <===> server-stream")
                             .build(),
 
                     new StreamObserver<HelloProto.HelloResponse>() {

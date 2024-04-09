@@ -21,8 +21,8 @@ public class GrpcClient2 {
             HelloServiceGrpc.HelloServiceBlockingStub helloServiceBlockingStub = HelloServiceGrpc.newBlockingStub(managedChannel);
 
             HelloProto.HelloRequest1 request1 = HelloProto.HelloRequest1.newBuilder()
-                    .addName("first")
-                    .addName("second")
+                    .addName("NameList_First")
+                    .addName("NameList_Second")
                     .build();
 
             HelloProto.HelloResponse1 response1 = helloServiceBlockingStub.hello1(request1);

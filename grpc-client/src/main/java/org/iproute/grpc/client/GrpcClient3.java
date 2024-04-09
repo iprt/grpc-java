@@ -27,7 +27,7 @@ public class GrpcClient3 {
 
             HelloProto.HelloRequest.Builder builder = HelloProto.HelloRequest.newBuilder();
 
-            builder.setName("GrpcClient3");
+            builder.setName("newBlockingStub");
 
             HelloProto.HelloRequest request = builder.build();
 

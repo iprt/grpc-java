@@ -5,7 +5,7 @@ plugins {
 
 
 def grpcVersion = '1.63.0' // CURRENT_GRPC_VERSION
-def protobufVersion = '3.25.1'
+def protobufVersion = '4.26.0'
 def protocVersion = protobufVersion
 
 dependencies {

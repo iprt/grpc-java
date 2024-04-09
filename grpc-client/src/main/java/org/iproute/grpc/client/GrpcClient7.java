@@ -26,7 +26,7 @@ public class GrpcClient7 {
             TestServiceGrpc.TestServiceFutureStub testServiceFutureStub = TestServiceGrpc.newFutureStub(channel);
 
             ListenableFuture<TestProto.TestResponse> future = testServiceFutureStub.test(
-                    TestProto.TestRequest.newBuilder().setName("GrpcClient7").build()
+                    TestProto.TestRequest.newBuilder().setName("newFutureStub").build()
             );
 
 

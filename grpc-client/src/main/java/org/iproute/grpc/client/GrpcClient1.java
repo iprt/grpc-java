@@ -13,6 +13,7 @@ import org.iproute.grpc.api.HelloServiceGrpc;
  * @author zhuzhenjie
  */
 public class GrpcClient1 {
+
     public static void main(String[] args) {
         // 1 创建通信的管道
         ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("localhost", 9000).usePlaintext().build();
@@ -25,7 +26,7 @@ public class GrpcClient1 {
 
             HelloProto.HelloRequest.Builder builder = HelloProto.HelloRequest.newBuilder();
 
-            builder.setName("GrpcClient2");
+            builder.setName("GrpcClient1");
 
             HelloProto.HelloRequest request = builder.build();
 
@@ -41,4 +42,5 @@ public class GrpcClient1 {
         }
 
     }
+
 }
