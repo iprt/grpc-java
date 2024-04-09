@@ -26,6 +26,29 @@ dependencies {
     api 'ch.qos.logback:logback-core:1.4.12'
 }
 
+
+// https://github.com/grpc/grpc-java/blob/master/examples/build.gradle
+protobuf {
+    protoc { artifact = "com.google.protobuf:protoc:${protocVersion}" }
+    plugins {
+        grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
+    }
+    generateProtoTasks {
+        all()*.plugins { grpc {} }
+    }
+}
+
+// Inform IDEs like IntelliJ IDEA, Eclipse or NetBeans about the generated code.
+sourceSets {
+    main {
+        java {
+            srcDirs 'build/generated/source/proto/main/grpc'
+            srcDirs 'build/generated/source/proto/main/java'
+        }
+    }
+}
+
+/*
 protobuf {
 
     protoc {
@@ -46,3 +69,4 @@ protobuf {
     }
 
 }
+ */
