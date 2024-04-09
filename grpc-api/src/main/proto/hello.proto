@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option java_multiple_files = false;
+
+option java_package = "org.iproute.grpc.api";
+
+option java_outer_classname = "HelloProto";
+
+/*
+IDL 文件的目的是发布RPC服务 service
+ */
+
+// 定义入参
+message HelloRequest{
+  string name = 1;
+}
+
+// 定义出参
+message HelloResponse{
+  string result = 1;
+}
+
+message HelloRequest1{
+  repeated string name = 1 ;
+}
+
+message HelloResponse1{
+  string result = 1;
+}
+
+
+// 定义服务
+service HelloService{
+
+  rpc hello(HelloRequest) returns (HelloResponse){}
+
+  rpc hello1(HelloRequest1) returns (HelloResponse1){}
+
+  // server stream
+  rpc c2ss(HelloRequest) returns (stream HelloResponse){}
+
+  // client stream
+  rpc cs2s(stream HelloRequest) returns (HelloResponse){}
+
+  // client stream 2 server stream
+  rpc cs2ss(stream HelloRequest) returns(stream HelloResponse){}
+
+}

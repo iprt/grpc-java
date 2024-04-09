@@ -1,0 +1,6 @@
+rootProject.name = 'grpc-java'
+
+include("grpc-api")
+include("grpc-client")
+include("grpc-service")
+

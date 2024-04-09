@@ -1,0 +1,45 @@
+plugins {
+    id 'java-library'
+    id 'com.google.protobuf' version '0.9.4'
+}
+
+
+def grpcVersion = '1.63.0' // CURRENT_GRPC_VERSION
+def protobufVersion = '3.25.1'
+def protocVersion = protobufVersion
+
+dependencies {
+    api "io.grpc:grpc-protobuf:${grpcVersion}"
+    api "io.grpc:grpc-services:${grpcVersion}"
+    api "io.grpc:grpc-stub:${grpcVersion}"
+
+
+    compileOnly "org.apache.tomcat:annotations-api:6.0.53"
+
+    // examples/advanced need this for JsonFormat
+    api "com.google.protobuf:protobuf-java-util:${protobufVersion}"
+
+    runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
+
+}
+
+protobuf {
+
+    protoc {
+        artifact = "com.google.protobuf:protoc:${protocVersion}"
+    }
+
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+        ofSourceSet('main').configureEach {
+            plugins {
+                grpc {}
+            }
+        }
+    }
+
+}
