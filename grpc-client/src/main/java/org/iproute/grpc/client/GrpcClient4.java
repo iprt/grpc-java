@@ -21,7 +21,7 @@ public class GrpcClient4 {
 
     public static void main(String[] args) {
 
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("127.0.0.1", 9000).usePlaintext().build();
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("127.0.0.1", 9090).usePlaintext().build();
 
         try {
             // 异步的关键

@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class GrpcClient6 {
 
     public static void main(String[] args) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("127.0.0.1", 9000).usePlaintext().build();
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("127.0.0.1", 9090).usePlaintext().build();
 
         try {
             HelloServiceGrpc.HelloServiceStub helloServiceStub = HelloServiceGrpc.newStub(channel);

@@ -19,7 +19,7 @@ public class GrpcServer {
 
         // 1. 绑定端口
         log.info("step 1 : 绑定端口");
-        ServerBuilder<?> serverBuilder = ServerBuilder.forPort(9000);
+        ServerBuilder<?> serverBuilder = ServerBuilder.forPort(9090);
 
         // 2. 添加服务
         log.info("step 2 : 添加服务");

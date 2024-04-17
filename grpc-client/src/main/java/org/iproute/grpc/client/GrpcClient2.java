@@ -17,7 +17,7 @@ import org.iproute.grpc.api.HelloServiceGrpc;
 public class GrpcClient2 {
 
     public static void main(String[] args) {
-        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("127.0.0.1", 9000).usePlaintext().build();
+        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("127.0.0.1", 9090).usePlaintext().build();
 
         try {
             HelloServiceGrpc.HelloServiceBlockingStub helloServiceBlockingStub = HelloServiceGrpc.newBlockingStub(managedChannel);

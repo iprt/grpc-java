@@ -18,7 +18,7 @@ public class GrpcClient1 {
 
     public static void main(String[] args) {
         // 1 创建通信的管道
-        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("127.0.0.1", 9000).usePlaintext().build();
+        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("127.0.0.1", 9090).usePlaintext().build();
 
         try {
             // 2. 获取代理对象 stub

@@ -1,0 +1,29 @@
+plugins {
+    id 'org.springframework.boot' version '3.0.2'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'java'
+}
+
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    implementation project(":grpc-api")
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+    implementation 'net.devh:grpc-spring-boot-starter:3.1.0.RELEASE'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
