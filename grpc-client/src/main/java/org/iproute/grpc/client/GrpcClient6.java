@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * GrpcClient6
  *
- * @author zhuzhenjie
+ * @author devops@kubectl.net
  */
 @Slf4j
 public class GrpcClient6 {

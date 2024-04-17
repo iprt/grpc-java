@@ -1,18 +1,18 @@
-package org.iproute.grpc.boot.server;
+package org.iproute.grpc.boot.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * GRpcServerApplication
+ * GRpcClientApplication
  *
  * @author devops@kubectl.net
  */
 @SpringBootApplication
-public class GRpcServerApplication {
+public class GRpcClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GRpcServerApplication.class, args);
+        SpringApplication.run(GRpcClientApplication.class, args);
     }
 
 }

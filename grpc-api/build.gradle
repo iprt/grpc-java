@@ -4,11 +4,11 @@ plugins {
 }
 
 
-def grpcVersion = '1.63.0' // CURRENT_GRPC_VERSION
+def grpcVersion = "$grpc_version" // CURRENT_GRPC_VERSION
 // def protobufVersion = '4.26.0'
 // https://grpc-ecosystem.github.io/grpc-spring/zh-CN/server/getting-started.html
 // 由于 starter 的使用 protobufVersion 使用 '3.23.4'
-def protobufVersion = '3.23.4'
+def protobufVersion = "$protobuf_version"
 def protocVersion = protobufVersion
 
 dependencies {
@@ -25,8 +25,8 @@ dependencies {
     runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
 
     api 'org.slf4j:slf4j-api:1.7.36'
-    api 'ch.qos.logback:logback-classic:1.4.12'
-    api 'ch.qos.logback:logback-core:1.4.12'
+    api 'ch.qos.logback:logback-classic:1.4.14'
+    api 'ch.qos.logback:logback-core:1.4.14'
 }
 
 

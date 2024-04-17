@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * 关键 newStub
  *
- * @author zhuzhenjie
+ * @author devops@kubectl.net
  */
 @Slf4j
 public class GrpcClient4 {
