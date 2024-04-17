@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation project(":grpc-api")
+    implementation project(":proto")
 
     compileOnly('org.projectlombok:lombok:1.18.28')
     annotationProcessor('org.projectlombok:lombok:1.18.28')

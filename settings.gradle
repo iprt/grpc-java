@@ -1,7 +1,9 @@
 rootProject.name = 'grpc-java'
 
-include("grpc-api")
+include("proto")
+
 include("grpc-client")
 include("grpc-server")
+
 include("grpc-springboot-client")
 include("grpc-springboot-server")
