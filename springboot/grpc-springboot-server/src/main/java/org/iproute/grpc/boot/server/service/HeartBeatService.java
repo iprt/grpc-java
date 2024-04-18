@@ -16,24 +16,9 @@ import org.iproute.grpc.api.ExchangeServiceGrpc;
 public class HeartBeatService extends ExchangeServiceGrpc.ExchangeServiceImplBase {
 
     @Override
-    public StreamObserver<ExchangeProto.HeartBeat> report(StreamObserver<ExchangeProto.Empty> responseObserver) {
-        return new StreamObserver<>() {
-            @Override
-            public void onNext(ExchangeProto.HeartBeat value) {
-                log.info("Received heartbeat: {}", value.getId());
-            }
-
-            @Override
-            public void onError(Throwable t) {
-                log.error(t.getMessage(), t);
-            }
-
-            @Override
-            public void onCompleted() {
-                // 理论上不会进入这里
-                responseObserver.onNext(ExchangeProto.Empty.getDefaultInstance());
-                responseObserver.onCompleted();
-            }
-        };
+    public void report(ExchangeProto.HeartBeat request, StreamObserver<ExchangeProto.Empty> responseObserver) {
+        log.info("received heartbeat for id: {}", request.getId());
+        responseObserver.onNext(ExchangeProto.Empty.getDefaultInstance());
+        responseObserver.onCompleted();
     }
 }

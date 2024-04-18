@@ -14,7 +14,7 @@ message Empty {
 }
 
 service ExchangeService{
-  rpc report(stream HeartBeat) returns (Empty);
+  rpc report(HeartBeat) returns (Empty);
 }
 
 message HelloRequest{

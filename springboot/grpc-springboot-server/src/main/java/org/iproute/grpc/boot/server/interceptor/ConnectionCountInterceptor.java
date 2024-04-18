@@ -2,6 +2,7 @@ package org.iproute.grpc.boot.server.interceptor;
 
 import io.grpc.ForwardingServerCallListener;
 import io.grpc.Metadata;
+import io.grpc.MethodDescriptor;
 import io.grpc.ServerCall;
 import io.grpc.ServerCallHandler;
 import io.grpc.ServerInterceptor;
@@ -26,6 +27,10 @@ public class ConnectionCountInterceptor implements ServerInterceptor {
         connectionCount.incrementAndGet();
         log.info("Current Connection Count: {}", connectionCount.get());
 
+        MethodDescriptor<ReqT, RespT> methodDescriptor = call.getMethodDescriptor();
+
+        log.info("MethodDescriptor | {}", methodDescriptor.getFullMethodName());
+
         return new ForwardingServerCallListener.SimpleForwardingServerCallListener<>(next.startCall(call, headers)) {
             @Override
             public void onHalfClose() {
@@ -38,4 +43,5 @@ public class ConnectionCountInterceptor implements ServerInterceptor {
             }
         };
     }
+
 }
