@@ -6,3 +6,7 @@ grpc:
 spring:
   application:
     name: grpc-springboot-server
+
+logging:
+  level:
+    org.iproute.grpc.boot.server.service.HeartBeatService: debug

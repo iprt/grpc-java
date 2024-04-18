@@ -19,15 +19,15 @@ public class HeartBeatTask {
     @GrpcClient("grpc-server")
     private ExchangeServiceGrpc.ExchangeServiceBlockingStub exchangeServiceBlockingStub;
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(cron = "*/5 * * * * ?")
     private void report() {
-        log.info("HeartBeat Report");
+        log.debug("HeartBeat Report");
         ExchangeProto.Empty reported = exchangeServiceBlockingStub.report(
                 ExchangeProto.HeartBeat.newBuilder()
                         .setId("HeartBeatTask")
                         .build()
         );
-        log.info("HeartBeat Down {}", reported);
+        log.debug("HeartBeat Down {}", reported);
     }
 
 }

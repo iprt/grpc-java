@@ -17,7 +17,7 @@ public class HeartBeatService extends ExchangeServiceGrpc.ExchangeServiceImplBas
 
     @Override
     public void report(ExchangeProto.HeartBeat request, StreamObserver<ExchangeProto.Empty> responseObserver) {
-        log.info("received heartbeat for id: {}", request.getId());
+        log.debug("received heartbeat for id: {}", request.getId());
         responseObserver.onNext(ExchangeProto.Empty.getDefaultInstance());
         responseObserver.onCompleted();
     }

@@ -25,21 +25,35 @@ public class ConnectionCountInterceptor implements ServerInterceptor {
                                                                  Metadata headers,
                                                                  ServerCallHandler<ReqT, RespT> next) {
         connectionCount.incrementAndGet();
-        log.info("Current Connection Count: {}", connectionCount.get());
 
+        log.debug("Current Connection Count: {}", connectionCount.get());
         MethodDescriptor<ReqT, RespT> methodDescriptor = call.getMethodDescriptor();
 
-        log.info("MethodDescriptor | {}", methodDescriptor.getFullMethodName());
+        log.debug("MethodDescriptor | {}", methodDescriptor.getFullMethodName());
 
         return new ForwardingServerCallListener.SimpleForwardingServerCallListener<>(next.startCall(call, headers)) {
+
             @Override
             public void onHalfClose() {
                 try {
                     super.onHalfClose();
                 } finally {
                     connectionCount.decrementAndGet();
-                    log.info("Current Connection Count: {}", connectionCount.get());
+                    log.debug("Current Connection Count: {}", connectionCount.get());
                 }
+            }
+
+            @Override
+            public void onCancel() {
+                log.debug("Connection cancelled by client.");
+                super.onCancel();
+            }
+
+            @Override
+            public void onComplete() {
+                log.debug("Connection completed by client.");
+                super.onComplete();
+
             }
         };
     }
