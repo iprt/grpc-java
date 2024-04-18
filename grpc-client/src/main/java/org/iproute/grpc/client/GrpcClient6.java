@@ -11,7 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * GrpcClient6
- *
+ * <p/>
+ * client stream 2 server stream
  * @author devops@kubectl.net
  */
 @Slf4j

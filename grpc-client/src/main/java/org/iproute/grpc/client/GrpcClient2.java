@@ -9,7 +9,7 @@ import org.iproute.grpc.api.HelloServiceGrpc;
 /**
  * GrpcClient2
  * <p>
- * newBlockingStub
+ * client 2 server | newBlockingStub
  *
  * @author devops@kubectl.net
  */

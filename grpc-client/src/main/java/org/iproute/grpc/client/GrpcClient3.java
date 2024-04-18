@@ -11,7 +11,7 @@ import java.util.Iterator;
 /**
  * GrpcClient3 阻塞的
  * <p>
- * newBlockingStub
+ * client 2 server stream | newBlockingStub
  *
  * @author devops@kubectl.net
  */

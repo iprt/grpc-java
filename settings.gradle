@@ -1,9 +1,19 @@
+dependencyResolutionManagement {
+
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+    }
+
+}
+
 rootProject.name = 'grpc-java'
 
 include("proto")
 
 include("grpc-client")
 include("grpc-server")
+
+include("proto-springboot")
 
 include("grpc-springboot-client")
 include("grpc-springboot-server")

@@ -12,12 +12,12 @@ configurations {
 }
 
 dependencies {
-    implementation project(":proto")
+    implementation project(":proto-springboot")
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    implementation 'org.springframework.boot:spring-boot-starter-logging'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 
     // implementation "net.devh:grpc-spring-boot-starter:$grpc_starter_version"
     implementation "net.devh:grpc-client-spring-boot-starter:$grpc_starter_version"

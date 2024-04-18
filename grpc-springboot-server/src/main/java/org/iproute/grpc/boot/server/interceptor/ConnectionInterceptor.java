@@ -8,12 +8,12 @@ import io.grpc.ServerInterceptor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * DisconnectInterceptor
+ * ConnectionInterceptor
  *
  * @author devops@kubectl.net
  */
 @Slf4j
-public class DisconnectInterceptor implements ServerInterceptor {
+public class ConnectionInterceptor implements ServerInterceptor {
 
     @Override
     public <ReqT, RespT> ServerCall.Listener<ReqT> interceptCall(ServerCall<ReqT, RespT> call,
@@ -21,24 +21,21 @@ public class DisconnectInterceptor implements ServerInterceptor {
                                                                  ServerCallHandler<ReqT, RespT> next) {
         ServerCall.Listener<ReqT> delegate = next.startCall(call, requestHeaders);
 
+        log.info("Connection opened by client.");
+
         return new ForwardingServerCallListener.SimpleForwardingServerCallListener<>(delegate) {
 
             @Override
-            public void onReady() {
-                log.info("Client ready");
-                super.onReady();
-            }
-
-            @Override
             public void onCancel() {
-                log.info("Client disconnected");
+                log.info("Connection cancelled by client.");
                 super.onCancel();
             }
 
             @Override
             public void onComplete() {
-                log.info("Call completed");
+                log.info("Connection completed by client.");
                 super.onComplete();
+
             }
 
         };

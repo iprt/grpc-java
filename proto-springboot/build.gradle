@@ -1,0 +1,75 @@
+plugins {
+    id 'java-library'
+    id 'com.google.protobuf' version '0.9.4'
+}
+
+
+def grpcVersion = "$grpc_version" // CURRENT_GRPC_VERSION
+// def protobufVersion = '4.26.0'
+// https://grpc-ecosystem.github.io/grpc-spring/zh-CN/server/getting-started.html
+// 由于 starter 的使用 protobufVersion 使用 '3.23.4'
+def protobufVersion = "$protobuf_version"
+def protocVersion = protobufVersion
+
+dependencies {
+    api "io.grpc:grpc-protobuf:${grpcVersion}"
+    api "io.grpc:grpc-services:${grpcVersion}"
+    api "io.grpc:grpc-stub:${grpcVersion}"
+
+
+    compileOnly "org.apache.tomcat:annotations-api:6.0.53"
+
+    // examples/advanced need this for JsonFormat
+    api "com.google.protobuf:protobuf-java-util:${protobufVersion}"
+
+    runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
+
+    api 'org.slf4j:slf4j-api:1.7.36'
+    api 'ch.qos.logback:logback-classic:1.4.14'
+    api 'ch.qos.logback:logback-core:1.4.14'
+}
+
+
+// https://github.com/grpc/grpc-java/blob/master/examples/build.gradle
+protobuf {
+    protoc { artifact = "com.google.protobuf:protoc:${protocVersion}" }
+    plugins {
+        grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
+    }
+    generateProtoTasks {
+        all()*.plugins { grpc {} }
+    }
+}
+
+// Inform IDEs like IntelliJ IDEA, Eclipse or NetBeans about the generated code.
+sourceSets {
+    main {
+        java {
+            srcDirs 'build/generated/source/proto/main/grpc'
+            srcDirs 'build/generated/source/proto/main/java'
+        }
+    }
+}
+
+/*
+protobuf {
+
+    protoc {
+        artifact = "com.google.protobuf:protoc:${protocVersion}"
+    }
+
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+        ofSourceSet('main').configureEach {
+            plugins {
+                grpc {}
+            }
+        }
+    }
+
+}
+ */
