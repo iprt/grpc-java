@@ -1,6 +1,7 @@
 # grpc java
 
-## 对于 api 模块
+## 对于 proto 模块
 
 `gradlew` 执行 `generateProto`
 
+![img.png](.assets/img.png)
