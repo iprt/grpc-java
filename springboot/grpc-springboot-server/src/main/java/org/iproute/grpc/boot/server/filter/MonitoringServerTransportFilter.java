@@ -1,8 +1,11 @@
 package org.iproute.grpc.boot.server.filter;
 
 import io.grpc.Attributes;
+import io.grpc.Grpc;
 import io.grpc.ServerTransportFilter;
 import lombok.extern.slf4j.Slf4j;
+
+import java.net.InetSocketAddress;
 
 /**
  * MonitoringServerTransportFilter
@@ -20,7 +23,11 @@ public class MonitoringServerTransportFilter extends ServerTransportFilter {
 
     @Override
     public void transportTerminated(Attributes transportAttrs) {
-        log.info("Transport is terminated: {}", transportAttrs);
+        if (transportAttrs.get(Grpc.TRANSPORT_ATTR_REMOTE_ADDR) instanceof InetSocketAddress socketAddress) {
+            log.error("Transport terminated: ip = {} ;port = {}", socketAddress.getHostString(), socketAddress.getPort());
+        } else {
+            log.error("Transport is terminated: {}", transportAttrs);
+        }
         super.transportTerminated(transportAttrs);
     }
 

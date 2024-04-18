@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author devops@kubectl.net
  */
 @Slf4j
-public class ConnectionCountInterceptor implements ServerInterceptor {
+public class GrpcConnectionCountInterceptor implements ServerInterceptor {
 
     private final AtomicInteger connectionCount = new AtomicInteger(0);
 
@@ -29,7 +29,7 @@ public class ConnectionCountInterceptor implements ServerInterceptor {
         log.debug("Current Connection Count: {}", connectionCount.get());
         MethodDescriptor<ReqT, RespT> methodDescriptor = call.getMethodDescriptor();
 
-        log.debug("MethodDescriptor | {}", methodDescriptor.getFullMethodName());
+        log.info("MethodDescriptor | {}", methodDescriptor.getFullMethodName());
 
         return new ForwardingServerCallListener.SimpleForwardingServerCallListener<>(next.startCall(call, headers)) {
 
