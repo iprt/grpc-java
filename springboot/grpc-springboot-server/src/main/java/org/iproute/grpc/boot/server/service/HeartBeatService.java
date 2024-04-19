@@ -21,4 +21,5 @@ public class HeartBeatService extends ExchangeServiceGrpc.ExchangeServiceImplBas
         responseObserver.onNext(ExchangeProto.Empty.getDefaultInstance());
         responseObserver.onCompleted();
     }
+
 }

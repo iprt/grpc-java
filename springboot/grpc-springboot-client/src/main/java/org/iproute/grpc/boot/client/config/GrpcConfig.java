@@ -35,10 +35,11 @@ public class GrpcConfig {
         return (channelBuilder, name) -> {
             if (channelBuilder instanceof NettyChannelBuilder) {
                 ((NettyChannelBuilder) channelBuilder)
+                        .enableRetry()
+                        .maxHedgedAttempts(10)
                         .addTransportFilter(monitoringClientTransportFilter);
             }
         };
     }
-
 
 }
