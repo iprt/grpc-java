@@ -6,17 +6,6 @@ option java_package = "org.iproute.grpc.api";
 
 option java_outer_classname = "ExchangeProto";
 
-message HeartBeat{
-  string id = 1;
-}
-
-message Empty {
-}
-
-service ExchangeService{
-  rpc report(HeartBeat) returns (Empty);
-}
-
 message HelloRequest{
   string name = 1;
 }

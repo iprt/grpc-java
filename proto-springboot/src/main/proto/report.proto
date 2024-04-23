@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_multiple_files = false;
+
+option java_package = "org.iproute.grpc.api";
+
+option java_outer_classname = "ReportProto";
+
+message HeartBeatRequest{
+  string id = 1;
+}
+
+message HeartBeatResponse{
+}
+
+service ReportService{
+  rpc hb(HeartBeatRequest) returns (HeartBeatResponse);
+}

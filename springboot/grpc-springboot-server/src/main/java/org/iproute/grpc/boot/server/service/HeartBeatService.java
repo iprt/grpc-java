@@ -3,8 +3,8 @@ package org.iproute.grpc.boot.server.service;
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;
-import org.iproute.grpc.api.ExchangeProto;
-import org.iproute.grpc.api.ExchangeServiceGrpc;
+import org.iproute.grpc.api.ReportProto;
+import org.iproute.grpc.api.ReportServiceGrpc;
 
 /**
  * HeartBeatService
@@ -13,13 +13,13 @@ import org.iproute.grpc.api.ExchangeServiceGrpc;
  */
 @GrpcService
 @Slf4j
-public class HeartBeatService extends ExchangeServiceGrpc.ExchangeServiceImplBase {
+public class HeartBeatService extends ReportServiceGrpc.ReportServiceImplBase {
 
     @Override
-    public void report(ExchangeProto.HeartBeat request, StreamObserver<ExchangeProto.Empty> responseObserver) {
-        log.debug("received heartbeat for id: {}", request.getId());
-        responseObserver.onNext(ExchangeProto.Empty.getDefaultInstance());
+    public void hb(ReportProto.HeartBeatRequest request, StreamObserver<ReportProto.HeartBeatResponse> responseObserver) {
+        String id = request.getId();
+        log.info("received heartbeat id: {}", id);
+        responseObserver.onNext(ReportProto.HeartBeatResponse.getDefaultInstance());
         responseObserver.onCompleted();
     }
-
 }
