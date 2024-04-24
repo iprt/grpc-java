@@ -9,7 +9,7 @@ import org.iproute.grpc.boot.client.service.TestService;
 import org.springframework.stereotype.Service;
 
 /**
- * HelloServiceImpl
+ * TestServiceImpl
  *
  * @author devops@kubectl.net
  */
