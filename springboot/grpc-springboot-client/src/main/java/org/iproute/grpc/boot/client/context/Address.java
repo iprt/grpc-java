@@ -31,17 +31,19 @@ public class Address {
     }
 
     public static Address from(SocketAddress socketAddress, boolean local) {
-        if (Objects.isNull(socketAddress)) {
-            return local ? ServerConn.DEFAULT.getLocal().copy() : ServerConn.DEFAULT.getRemote().copy();
-        }
+        return Objects.isNull(socketAddress)
+                ? unknown(local)
+                :
+                (
+                        (socketAddress instanceof InetSocketAddress address)
+                                ? Address.builder().host(address.getHostString()).port(address.getPort()).build()
+                                : unknown(local)
+                );
 
-        if (socketAddress instanceof InetSocketAddress address) {
-            return Address.builder()
-                    .host(address.getHostString())
-                    .port(address.getPort())
-                    .build();
-        } else {
-            return local ? ServerConn.DEFAULT.getLocal().copy() : ServerConn.DEFAULT.getRemote().copy();
-        }
     }
+
+    private static Address unknown(boolean local) {
+        return local ? ServerConn.DEFAULT.getLocal().copy() : ServerConn.DEFAULT.getRemote().copy();
+    }
+
 }
