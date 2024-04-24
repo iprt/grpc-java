@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class HeartBeatCronTask extends AbstractCronTaskService {
     private final TaskScheduler taskScheduler;
-    private final HeatBeatRunnable heatBeatRunnable;
+    private final HeartBeatRunnable heartBeatRunnable;
 
     @Override
     public String cron() {
@@ -34,7 +34,7 @@ public class HeartBeatCronTask extends AbstractCronTaskService {
 
     @Override
     public Runnable getRunnable() {
-        return this.heatBeatRunnable;
+        return this.heartBeatRunnable;
     }
 
 }

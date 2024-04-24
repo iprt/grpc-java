@@ -1,11 +1,14 @@
 package org.iproute.grpc.boot.client.config;
 
+import io.grpc.ClientInterceptor;
 import io.grpc.ClientTransportFilter;
 import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.client.channelfactory.GrpcChannelConfigurer;
+import net.devh.boot.grpc.client.interceptor.GrpcGlobalClientInterceptor;
 import org.iproute.grpc.boot.client.context.SharedOperator;
 import org.iproute.grpc.boot.client.filter.MonitoringClientTransportFilter;
+import org.iproute.grpc.boot.client.interceptor.GrpcConnectionClientInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -42,6 +45,11 @@ public class GrpcConfig {
                         .addTransportFilter(monitoringClientTransportFilter);
             }
         };
+    }
+
+    @GrpcGlobalClientInterceptor
+    public ClientInterceptor grpcConnectionClientInterceptor(SharedOperator sharedOperator) {
+        return new GrpcConnectionClientInterceptor(sharedOperator);
     }
 
 }

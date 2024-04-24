@@ -3,5 +3,6 @@ server:
 
 logging:
   level:
-    org.iproute.grpc.boot.client.task.hb.HeatBeatRunnable: debug
-    org.iproute.grpc.boot.client.filter.MonitoringClientTransportFilter: info
+    org.iproute.grpc.boot.client.task.hb.org.iproute.grpc.boot.client.task.hb.HeartBeatRunnable: debug
+    org.iproute.grpc.boot.client.filter.MonitoringClientTransportFilter: debug
+    org.iproute.grpc.boot.client.interceptor.GrpcConnectionClientInterceptor: debug

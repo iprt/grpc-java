@@ -11,12 +11,12 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * GRpcConnectionCountInterceptor
+ * GrpcConnectionCountInterceptor
  *
  * @author devops@kubectl.net
  */
 @Slf4j
-public class GRpcConnectionCountInterceptor implements ServerInterceptor {
+public class GrpcConnectionCountInterceptor implements ServerInterceptor {
 
     private final AtomicInteger connectionCount = new AtomicInteger(0);
 

@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 /**
- * HeatBeatRunnable
+ * HeartBeatRunnable
  *
  * @author devops@kubectl.net
  */
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Component
 @Slf4j
-public class HeatBeatRunnable implements Runnable {
+public class HeartBeatRunnable implements Runnable {
     private final SharedOperator sharedOperator;
 
     @GrpcClient(GrpcConfig.GRPC_SERVER_INSTANCE)
@@ -31,6 +31,11 @@ public class HeatBeatRunnable implements Runnable {
         report();
     }
 
+    /**
+     * Sends a HeartBeat report to the server and updates the server readiness status.
+     * <p>
+     * {@link org.iproute.grpc.boot.client.interceptor.GrpcConnectionClientInterceptor} cancel
+     */
     private void report() {
         String id = UUID.randomUUID().toString();
         log.debug("HeartBeat Report; id = {}", id);
@@ -40,11 +45,12 @@ public class HeatBeatRunnable implements Runnable {
                             .setId(id)
                             .build()
             );
-            sharedOperator.setServerReady();
             log.debug("HeartBeat Down Success; {}", pong.getRes());
+            sharedOperator.setServerReady();
         } catch (Exception e) {
             log.debug("HeartBeat Down Failed !");
-            sharedOperator.setServerNotReady();
+            // {@link org.iproute.grpc.boot.client.interceptor.GrpcConnectionClientInterceptor} cancel
+            // sharedOperator.setServerNotReady();
         }
 
     }
