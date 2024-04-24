@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation project(":proto")
+    implementation project(":netty:proto")
 
     compileOnly('org.projectlombok:lombok:1.18.28')
     annotationProcessor('org.projectlombok:lombok:1.18.28')

@@ -12,7 +12,7 @@ configurations {
 }
 
 dependencies {
-    implementation project(":proto-springboot")
+    implementation project(":springboot:proto")
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

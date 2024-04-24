@@ -8,12 +8,12 @@ dependencyResolutionManagement {
 
 rootProject.name = 'grpc-java'
 
-include("proto")
+include("netty:proto")
 
 include("netty:grpc-client")
 include("netty:grpc-server")
 
-include("proto-springboot")
+include("springboot:proto")
 
 include("springboot:grpc-springboot-client")
 include("springboot:grpc-springboot-server")
