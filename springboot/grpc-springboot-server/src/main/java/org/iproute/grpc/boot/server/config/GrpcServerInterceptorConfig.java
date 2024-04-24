@@ -7,13 +7,13 @@ import org.iproute.grpc.boot.server.interceptor.GRpcConnectionCountInterceptor;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * GRpcConfig
+ * GrpcServerInterceptorConfig
  *
  * @author devops@kubectl.net
  */
 @Configuration
 @Slf4j
-public class GRpcServerInterceptorConfig {
+public class GrpcServerInterceptorConfig {
 
     @GrpcGlobalServerInterceptor
     public ServerInterceptor connectionCountInterceptor() {

@@ -9,13 +9,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * GRpcConfig
+ * GrpcConfig
  *
  * @author devops@kubectl.net
  */
 @Configuration
 @Slf4j
-public class GRpcConfig {
+public class GrpcConfig {
 
     @Bean
     public ClientTransportFilter monitoringClientTransportFilter() {

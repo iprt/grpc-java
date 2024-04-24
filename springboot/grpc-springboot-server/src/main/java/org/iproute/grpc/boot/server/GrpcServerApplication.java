@@ -4,15 +4,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * GRpcServerApplication
+ * GrpcServerApplication
  *
  * @author devops@kubectl.net
  */
 @SpringBootApplication
-public class GRpcServerApplication {
+public class GrpcServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GRpcServerApplication.class, args);
+        SpringApplication.run(GrpcServerApplication.class, args);
     }
 
 }
