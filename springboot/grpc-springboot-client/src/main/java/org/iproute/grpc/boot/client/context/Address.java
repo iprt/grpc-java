@@ -30,6 +30,13 @@ public class Address {
                 .build();
     }
 
+    /**
+     * Creates an Address object from a given SocketAddress.
+     *
+     * @param socketAddress The SocketAddress to convert to an Address.
+     * @param local         Whether the SocketAddress is local or not.
+     * @return The Address object created from the SocketAddress, or an unknown Address if the SocketAddress is null or not an instance of InetSocketAddress.
+     */
     public static Address from(SocketAddress socketAddress, boolean local) {
         return Objects.isNull(socketAddress)
                 ? unknown(local)

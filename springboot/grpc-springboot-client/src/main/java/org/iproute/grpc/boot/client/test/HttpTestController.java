@@ -10,8 +10,10 @@ import org.iproute.grpc.boot.client.context.ServerConn;
 import org.iproute.grpc.boot.client.service.TestService;
 import org.iproute.grpc.boot.client.task.CronTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.List;
 import java.util.Map;
@@ -28,6 +30,16 @@ import java.util.stream.Collectors;
 public class HttpTestController {
     private final TestService testService;
     private final GrpcApplicationContext grpcApplicationContext;
+
+    @RestControllerAdvice
+    @Slf4j
+    public static class GlobalExceptionHandler {
+        @ExceptionHandler(Exception.class)
+        public String handleException(Exception e) {
+            log.error("handleException {}", e.getMessage());
+            return e.getMessage();
+        }
+    }
 
     @GetMapping("/")
     @ServerReadyThen
