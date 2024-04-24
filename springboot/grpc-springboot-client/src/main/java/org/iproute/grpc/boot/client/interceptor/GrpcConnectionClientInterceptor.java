@@ -39,7 +39,7 @@ public class GrpcConnectionClientInterceptor implements ClientInterceptor {
 
             @Override
             public void sendMessage(ReqT message) {
-                log.info("GrpcConnectionClientInterceptor sendMessage");
+                log.debug("GrpcConnectionClientInterceptor sendMessage");
                 super.sendMessage(message);
             }
 
