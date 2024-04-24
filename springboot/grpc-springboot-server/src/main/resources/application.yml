@@ -4,9 +4,7 @@ grpc:
     port: 9090
 
 spring:
+  profiles:
+    active: dev
   application:
     name: grpc-springboot-server
-
-logging:
-  level:
-    org.iproute.grpc.boot.server.service.HeartBeatService: debug

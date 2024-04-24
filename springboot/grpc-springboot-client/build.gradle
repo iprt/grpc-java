@@ -18,6 +18,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
 
     // implementation "net.devh:grpc-spring-boot-starter:$grpc_starter_version"
     implementation "net.devh:grpc-client-spring-boot-starter:$grpc_starter_version"

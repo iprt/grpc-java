@@ -1,0 +1,7 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    org.iproute.grpc.boot.client.task.hb.HeatBeatRunnable: debug
+    org.iproute.grpc.boot.client.filter.MonitoringClientTransportFilter: info

@@ -4,6 +4,7 @@ import io.grpc.ClientTransportFilter;
 import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.client.channelfactory.GrpcChannelConfigurer;
+import org.iproute.grpc.boot.client.context.SharedOperator;
 import org.iproute.grpc.boot.client.filter.MonitoringClientTransportFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,10 +17,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @Slf4j
 public class GrpcConfig {
+    public static final String GRPC_SERVER_INSTANCE = "grpc-server";
 
     @Bean
-    public ClientTransportFilter monitoringClientTransportFilter() {
-        return new MonitoringClientTransportFilter();
+    public ClientTransportFilter monitoringClientTransportFilter(SharedOperator sharedOperator) {
+        return new MonitoringClientTransportFilter(sharedOperator);
     }
 
     /**
@@ -35,8 +37,8 @@ public class GrpcConfig {
         return (channelBuilder, name) -> {
             if (channelBuilder instanceof NettyChannelBuilder) {
                 ((NettyChannelBuilder) channelBuilder)
-                        .enableRetry()
-                        .maxHedgedAttempts(10)
+                        // .enableRetry()
+                        // .maxHedgedAttempts(10)
                         .addTransportFilter(monitoringClientTransportFilter);
             }
         };

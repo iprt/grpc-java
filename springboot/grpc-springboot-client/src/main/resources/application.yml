@@ -1,6 +1,3 @@
-server:
-  port: 8080
-
 grpc:
   client:
     grpc-server:
@@ -11,5 +8,7 @@ grpc:
       keep-alive-without-calls: true #没有RPC调用时是否也发送心跳
 
 spring:
+  profiles:
+    active: dev
   application:
     name: grpc-springboot-server
