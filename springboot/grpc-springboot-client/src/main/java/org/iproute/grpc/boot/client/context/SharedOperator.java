@@ -1,5 +1,13 @@
 package org.iproute.grpc.boot.client.context;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * SharedOperator
  *
@@ -52,9 +60,9 @@ public interface SharedOperator {
     /**
      * Connects to a remote host at the specified remote port, using the specified local port.
      *
-     * @param remoteHost  The host address of the remote server.
-     * @param remotePort  The port number of the remote server.
-     * @param localPort   The port number of the local server.
+     * @param remoteHost The host address of the remote server.
+     * @param remotePort The port number of the remote server.
+     * @param localPort  The port number of the local server.
      */
     void connect(String remoteHost, int remotePort, int localPort);
 
@@ -65,5 +73,80 @@ public interface SharedOperator {
      * After calling this method, the connection to the server will be terminated and the server details will be reset to their default values.
      */
     void disconnect();
+
+
+    @RequiredArgsConstructor(onConstructor = @__(@Autowired))
+    @Service
+    @Slf4j
+    class DefaultSharedOperator implements SharedOperator {
+        private final Shared shared;
+        private volatile ServerConn currentConn = ServerConn.DEFAULT;
+        private final Lock connLock = new ReentrantLock();
+
+        @Override
+        public void setServerReady() {
+            shared.getServerReady()
+                    .compareAndSet(false, true);
+        }
+
+        @Override
+        public void setServerNotReady() {
+            shared.getServerReady()
+                    .compareAndSet(true, false);
+        }
+
+        @Override
+        public boolean getServerReady() {
+            return shared.getServerReady().get();
+        }
+
+        @Override
+        public void setServerConn(String remoteHost, int remotePort, int localPort) {
+            ServerConn serverConn = ServerConn.create(remoteHost, remotePort, localPort);
+            if (shared.getServerConn().compareAndSet(
+                    currentConn, serverConn
+            )) {
+                log.debug("ServerConn {}", serverConn);
+                currentConn = serverConn;
+            }
+        }
+
+        @Override
+        public void clearServerConn() {
+            if (shared.getServerConn().compareAndSet(
+                    currentConn, ServerConn.DEFAULT
+            )) {
+                log.debug("Clear ServerConn {}", currentConn);
+                currentConn = ServerConn.DEFAULT;
+            }
+        }
+
+        @Override
+        public ServerConn getSeverConn() {
+            return shared.getServerConn().get();
+        }
+
+        @Override
+        public void connect(String remoteHost, int remotePort, int localPort) {
+            connLock.lock();
+            try {
+                this.setServerConn(remoteHost, remotePort, localPort);
+                this.setServerReady();
+            } finally {
+                connLock.unlock();
+            }
+        }
+
+        @Override
+        public void disconnect() {
+            connLock.lock();
+            try {
+                this.clearServerConn();
+                this.setServerNotReady();
+            } finally {
+                connLock.unlock();
+            }
+        }
+    }
 
 }
