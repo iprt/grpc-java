@@ -21,6 +21,13 @@ import java.util.Objects;
 @Builder
 @Data
 public class Address {
+    private static final String UNKNOWN_HOST = "unknown";
+    private static final int UNKNOWN_PORT = -1;
+    static final String LOCAL_HOST = "127.0.0.1";
+
+    public static final Address UNKNOWN_REMOTE = Address.builder().host(UNKNOWN_HOST).port(UNKNOWN_PORT).build();
+    public static final Address UNKNOWN_LOCAL = Address.builder().host(LOCAL_HOST).port(UNKNOWN_PORT).build();
+
     private String host;
     private int port;
 
@@ -50,7 +57,7 @@ public class Address {
     }
 
     private static Address unknown(boolean local) {
-        return local ? ServerConn.DEFAULT.getLocal().copy() : ServerConn.DEFAULT.getRemote().copy();
+        return local ? UNKNOWN_LOCAL.copy() : UNKNOWN_REMOTE.copy();
     }
 
 }

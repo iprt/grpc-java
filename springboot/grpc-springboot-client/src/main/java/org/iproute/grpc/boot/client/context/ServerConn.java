@@ -17,14 +17,10 @@ import lombok.ToString;
 @Builder
 @Data
 public class ServerConn {
-    private static final String UNKNOWN_HOST = "unknown";
-    private static final int UNKNOWN_PORT = -1;
-    private static final String LOCAL_HOST = "127.0.0.1";
-
     public static final ServerConn DEFAULT = ServerConn.builder()
             .connected(false)
-            .remote(Address.builder().host(UNKNOWN_HOST).port(UNKNOWN_PORT).build())
-            .local(Address.builder().host(LOCAL_HOST).port(UNKNOWN_PORT).build())
+            .remote(Address.UNKNOWN_REMOTE)
+            .local(Address.UNKNOWN_LOCAL)
             .build();
 
     private boolean connected;
@@ -35,7 +31,7 @@ public class ServerConn {
         return ServerConn.builder()
                 .connected(true)
                 .remote(Address.builder().host(remoteHost).port(remotePort).build())
-                .local(Address.builder().host(LOCAL_HOST).port(localPort).build())
+                .local(Address.builder().host(Address.LOCAL_HOST).port(localPort).build())
                 .build();
     }
 
