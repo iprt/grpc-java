@@ -39,9 +39,9 @@ public class HttpTestController {
 
         @ExceptionHandler(Exception.class)
         @ResponseBody
-        public ResponseEntity<String> handleException(Exception e) {
+        public ResponseEntity<Map<String, Object>> handleException(Exception e) {
             log.error("handleException {}", e.getMessage());
-            return ResponseEntity.ok(e.getMessage());
+            return ResponseEntity.ok(Map.of("code", 500, "msg", e.getMessage()));
         }
 
     }
