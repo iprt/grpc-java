@@ -7,13 +7,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.iproute.grpc.boot.client.config.anno.ServerReadyThen;
 import org.iproute.grpc.boot.client.context.GrpcApplicationContext;
 import org.iproute.grpc.boot.client.context.ServerConn;
+import org.iproute.grpc.boot.client.entities.GreetReq;
+import org.iproute.grpc.boot.client.entities.GreetResp;
 import org.iproute.grpc.boot.client.service.TestService;
-import org.iproute.grpc.boot.client.task.CronTaskService;
+import org.iproute.grpc.boot.task.CronTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,14 +25,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * HttpTestController
+ * GrpcClientTestController
  *
  * @author devops@kubectl.net
  */
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RestController
 @Slf4j
-public class HttpTestController {
+public class GrpcClientTestController {
     private final TestService testService;
     private final GrpcApplicationContext grpcApplicationContext;
 
@@ -57,6 +60,11 @@ public class HttpTestController {
                 "serverReady", serverReady(),
                 "serverConn", serverConn()
         );
+    }
+
+    @GetMapping("/greet")
+    public GreetResp greet(@RequestBody GreetReq req) {
+        return testService.greet(req);
     }
 
     @GetMapping("/serverReady")

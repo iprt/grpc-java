@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
  * @author devops@kubectl.net
  */
 @Configuration
-@Slf4j
 public class GrpcServerInterceptorConfig {
 
     @GrpcGlobalServerInterceptor

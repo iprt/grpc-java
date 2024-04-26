@@ -1,0 +1,7 @@
+### 获取所有在线连接
+GET http://127.0.0.1:8081/liveClients
+Accept: application/json
+
+### 获取所有历史连接
+GET http://127.0.0.1:8081/historyClients
+Accept: application/json

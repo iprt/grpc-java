@@ -1,3 +1,13 @@
+server:
+  port: 8081
+
+spring:
+  web:
+    resources:
+      add-mappings: false
+    #  mvc:
+    #    throw-exception-if-no-handler-found: true
+
 logging:
   level:
-    org.iproute.grpc.boot.server.service.HeartBeatService: debug
+    org.iproute.grpc.boot.server.task.print.ClientConnPrintTask: debug

@@ -1,4 +1,4 @@
-package org.iproute.grpc.boot.client.config;
+package org.iproute.grpc.boot.server.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +13,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
  *
  * @author devops@kubectl.net
  */
-@Configuration
 @EnableScheduling
+@Configuration
 public class AsyncConfiguration {
 
     @Bean

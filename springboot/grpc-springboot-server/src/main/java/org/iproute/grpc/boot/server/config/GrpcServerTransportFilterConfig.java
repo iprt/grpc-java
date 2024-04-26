@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.common.codec.GrpcCodecDiscoverer;
 import net.devh.boot.grpc.server.autoconfigure.GrpcServerFactoryAutoConfiguration;
 import net.devh.boot.grpc.server.serverfactory.GrpcServerConfigurer;
+import org.iproute.grpc.boot.server.context.SharedOperator;
 import org.iproute.grpc.boot.server.filter.MonitoringServerTransportFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,9 +23,10 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 public class GrpcServerTransportFilterConfig {
 
+
     @Bean
-    public ServerTransportFilter monitoringServerTransportFilter() {
-        return new MonitoringServerTransportFilter();
+    public ServerTransportFilter monitoringServerTransportFilter(SharedOperator sharedOperator) {
+        return new MonitoringServerTransportFilter(sharedOperator);
     }
 
     /**

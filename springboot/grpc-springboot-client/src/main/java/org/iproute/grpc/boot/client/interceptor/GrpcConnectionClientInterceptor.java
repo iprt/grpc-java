@@ -10,7 +10,6 @@ import io.grpc.MethodDescriptor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.iproute.grpc.boot.client.context.SharedOperator;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
@@ -20,7 +19,7 @@ import java.util.Objects;
  *
  * @author devops@kubectl.net
  */
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor
 @Slf4j
 public class GrpcConnectionClientInterceptor implements ClientInterceptor {
 
@@ -33,13 +32,13 @@ public class GrpcConnectionClientInterceptor implements ClientInterceptor {
 
             @Override
             public void start(Listener<RespT> responseListener, Metadata headers) {
-                log.debug("GrpcConnectionClientInterceptor start");
+                // log.debug("GrpcConnectionClientInterceptor start");
                 super.start(responseListener, headers);
             }
 
             @Override
             public void sendMessage(ReqT message) {
-                log.debug("GrpcConnectionClientInterceptor sendMessage");
+                // log.debug("GrpcConnectionClientInterceptor sendMessage");
                 super.sendMessage(message);
             }
 

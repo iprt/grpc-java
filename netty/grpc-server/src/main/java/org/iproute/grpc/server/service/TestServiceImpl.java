@@ -24,4 +24,5 @@ public class TestServiceImpl extends TestServiceGrpc.TestServiceImplBase {
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
+
 }

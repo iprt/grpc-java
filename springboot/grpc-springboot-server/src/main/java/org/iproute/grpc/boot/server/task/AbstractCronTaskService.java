@@ -1,4 +1,4 @@
-package org.iproute.grpc.boot.client.task;
+package org.iproute.grpc.boot.server.task;
 
 import org.iproute.grpc.boot.task.CronTaskService;
 import org.springframework.beans.factory.InitializingBean;

@@ -5,7 +5,7 @@ import io.grpc.ClientTransportFilter;
 import io.grpc.Grpc;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.iproute.grpc.boot.client.context.Address;
+import org.iproute.grpc.boot.context.Address;
 import org.iproute.grpc.boot.client.context.SharedOperator;
 import org.springframework.beans.factory.annotation.Autowired;
 

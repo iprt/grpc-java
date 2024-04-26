@@ -29,7 +29,7 @@ public class GrpcConnectionCountInterceptor implements ServerInterceptor {
         log.debug("Current Connection Count: {}", connectionCount.get());
         MethodDescriptor<ReqT, RespT> methodDescriptor = call.getMethodDescriptor();
 
-        log.info("MethodDescriptor | {}", methodDescriptor.getFullMethodName());
+        log.debug("MethodDescriptor | {}", methodDescriptor.getFullMethodName());
 
         return new ForwardingServerCallListener.SimpleForwardingServerCallListener<>(next.startCall(call, headers)) {
 
