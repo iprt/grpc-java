@@ -48,9 +48,14 @@ public class HttpTestController {
 
     @GetMapping("/")
     @ServerReadyThen
-    public String grpc() {
-        return testService.test(
+    public Map<String, Object> grpc() {
+        String grpc = testService.test(
                 grpcApplicationContext.getApplicationName()
+        );
+        return Map.of(
+                "grpc", grpc,
+                "serverReady", serverReady(),
+                "serverConn", serverConn()
         );
     }
 
