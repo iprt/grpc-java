@@ -1,6 +1,6 @@
 package org.iproute.grpc.boot.client.task.empty;
 
-import org.iproute.grpc.boot.client.task.AbstractCronTaskService;
+import org.iproute.grpc.boot.proto.task.AbstractCronTask;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * @author devops@kubectl.net
  */
 @Service
-public class EmptyCronTaskService extends AbstractCronTaskService {
+public class EmptyCronTask extends AbstractCronTask {
 
     @Override
     public TaskScheduler getTaskScheduler() {

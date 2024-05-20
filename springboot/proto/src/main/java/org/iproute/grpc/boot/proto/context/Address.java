@@ -1,4 +1,4 @@
-package org.iproute.grpc.boot.context;
+package org.iproute.grpc.boot.proto.context;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

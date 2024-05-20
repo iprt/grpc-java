@@ -10,7 +10,7 @@ import org.iproute.grpc.boot.client.context.ServerConn;
 import org.iproute.grpc.boot.client.entities.GreetReq;
 import org.iproute.grpc.boot.client.entities.GreetResp;
 import org.iproute.grpc.boot.client.service.TestService;
-import org.iproute.grpc.boot.task.CronTaskService;
+import org.iproute.grpc.boot.proto.task.CronTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -33,21 +33,9 @@ import java.util.stream.Collectors;
 @RestController
 @Slf4j
 public class GrpcClientTestController {
-    private final TestService testService;
+
     private final GrpcApplicationContext grpcApplicationContext;
-
-    @ControllerAdvice
-    @Slf4j
-    public static class GlobalExceptionHandler {
-
-        @ExceptionHandler(Exception.class)
-        @ResponseBody
-        public ResponseEntity<Map<String, Object>> handleException(Exception e) {
-            log.error("handleException {}", e.getMessage());
-            return ResponseEntity.ok(Map.of("code", 500, "msg", e.getMessage()));
-        }
-
-    }
+    private final TestService testService;
 
     @GetMapping("/")
     @ServerReadyThen
@@ -77,36 +65,28 @@ public class GrpcClientTestController {
         return grpcApplicationContext.serverConn();
     }
 
+    private final List<CronTask> tasks;
+
     @GetMapping("/startTasks")
     public List<TaskStatus> startTasks() {
-        grpcApplicationContext.getSpringApplicationContext()
-                .getBeansOfType(CronTaskService.class)
-                .values().forEach(CronTaskService::start);
-
+        tasks.forEach(CronTask::start);
         return taskStatus();
     }
 
     @GetMapping("/stopTasks")
     public List<TaskStatus> stopTasks() {
-        grpcApplicationContext.getSpringApplicationContext()
-                .getBeansOfType(CronTaskService.class)
-                .values().forEach(CronTaskService::stop);
+        tasks.forEach(CronTask::stop);
         return taskStatus();
     }
 
     @GetMapping("/tasks")
     public List<TaskStatus> taskStatus() {
-        Map<String, CronTaskService> tasks = grpcApplicationContext.getSpringApplicationContext().getBeansOfType(CronTaskService.class);
-        return tasks.keySet().stream()
-                .map(name -> {
-                            CronTaskService task = tasks.get(name);
-                            return TaskStatus.builder()
-                                    .name(name)
-                                    .className(task.getClass().getName())
-                                    .cron(task.cron())
-                                    .running(task.running())
-                                    .build();
-                        }
+        return tasks.stream()
+                .map(task -> TaskStatus.builder()
+                        .className(task.getClass().getName())
+                        .cron(task.cron())
+                        .running(task.running())
+                        .build()
                 )
                 .collect(Collectors.toList());
     }
@@ -114,10 +94,21 @@ public class GrpcClientTestController {
     @Builder
     @Data
     public static class TaskStatus {
-        private String name;
         private String className;
         private String cron;
         private boolean running;
     }
 
+
+    @ControllerAdvice
+    @Slf4j
+    public static class GlobalExceptionHandler {
+
+        @ExceptionHandler(Exception.class)
+        @ResponseBody
+        public ResponseEntity<Map<String, Object>> handleException(Exception e) {
+            log.error("handleException {}", e.getMessage());
+            return ResponseEntity.ok(Map.of("code", 500, "msg", e.getMessage()));
+        }
+    }
 }

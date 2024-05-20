@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.iproute.grpc.boot.context.Address;
+import org.iproute.grpc.boot.proto.context.Address;
 
 import java.util.Objects;
 

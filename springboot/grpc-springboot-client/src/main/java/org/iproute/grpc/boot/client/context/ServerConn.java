@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.iproute.grpc.boot.context.Address;
+import org.iproute.grpc.boot.proto.context.Address;
 
 /**
  * ServerConn

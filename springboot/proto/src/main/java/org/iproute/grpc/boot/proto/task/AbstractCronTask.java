@@ -1,6 +1,5 @@
-package org.iproute.grpc.boot.client.task;
+package org.iproute.grpc.boot.proto.task;
 
-import org.iproute.grpc.boot.task.CronTaskService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.support.CronTrigger;
@@ -14,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  *
  * @author devops@kubectl.net
  */
-public abstract class AbstractCronTaskService implements CronTaskService, InitializingBean {
+public abstract class AbstractCronTask implements CronTask, InitializingBean {
 
     private final AtomicBoolean status = new AtomicBoolean(false);
 

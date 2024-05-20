@@ -2,8 +2,8 @@ package org.iproute.grpc.boot.server.task.print;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.iproute.grpc.boot.proto.task.AbstractCronTask;
 import org.iproute.grpc.boot.server.context.GrpcServerApplicationContext;
-import org.iproute.grpc.boot.server.task.AbstractCronTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Component
 @Slf4j
-public class ClientConnPrintTask extends AbstractCronTaskService {
+public class ClientConnPrintTask extends AbstractCronTask {
     private final TaskScheduler taskScheduler;
     private final GrpcServerApplicationContext grpcServerApplicationContext;
 

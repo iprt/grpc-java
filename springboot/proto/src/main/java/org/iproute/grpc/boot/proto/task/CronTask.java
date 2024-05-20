@@ -1,11 +1,11 @@
-package org.iproute.grpc.boot.task;
+package org.iproute.grpc.boot.proto.task;
 
 /**
- * CronTaskService
+ * CronTask
  *
  * @author devops@kubectl.net
  */
-public interface CronTaskService {
+public interface CronTask {
 
     /**
      * Returns the cron expression for scheduling a task.

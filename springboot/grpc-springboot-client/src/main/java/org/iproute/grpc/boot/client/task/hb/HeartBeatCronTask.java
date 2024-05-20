@@ -1,7 +1,7 @@
 package org.iproute.grpc.boot.client.task.hb;
 
 import lombok.RequiredArgsConstructor;
-import org.iproute.grpc.boot.client.task.AbstractCronTaskService;
+import org.iproute.grpc.boot.proto.task.AbstractCronTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  */
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Service
-public class HeartBeatCronTask extends AbstractCronTaskService {
+public class HeartBeatCronTask extends AbstractCronTask {
     private final TaskScheduler taskScheduler;
     private final HeartBeatRunnable heartBeatRunnable;
 

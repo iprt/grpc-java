@@ -2,7 +2,7 @@ package org.iproute.grpc.boot.server.context;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.iproute.grpc.boot.context.Address;
+import org.iproute.grpc.boot.proto.context.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
