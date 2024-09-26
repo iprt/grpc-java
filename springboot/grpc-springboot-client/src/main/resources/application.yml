@@ -11,4 +11,4 @@ spring:
   profiles:
     active: dev
   application:
-    name: grpc-client-application
+    name: grpc-springboot-client

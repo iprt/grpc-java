@@ -7,4 +7,4 @@ spring:
   profiles:
     active: dev
   application:
-    name: grpc-server-application
+    name: grpc-springboot-server
