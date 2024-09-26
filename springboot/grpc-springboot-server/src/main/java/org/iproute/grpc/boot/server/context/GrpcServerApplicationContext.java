@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * GrpcServerApplicationContext
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 public interface GrpcServerApplicationContext extends ApplicationContextAware {
 

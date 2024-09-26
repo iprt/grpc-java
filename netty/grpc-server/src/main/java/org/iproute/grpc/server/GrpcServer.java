@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * GrpcServer
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Slf4j
 public class GrpcServer {

@@ -3,7 +3,7 @@ package org.iproute.grpc.boot.proto.task;
 /**
  * CronTask
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 public interface CronTask {
 

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 /**
  * ServerReadyAdvice
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Component

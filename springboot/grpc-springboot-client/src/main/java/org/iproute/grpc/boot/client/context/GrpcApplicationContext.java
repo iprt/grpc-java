@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 /**
  * GrpcApplicationContext
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 public interface GrpcApplicationContext extends ApplicationContextAware {
 

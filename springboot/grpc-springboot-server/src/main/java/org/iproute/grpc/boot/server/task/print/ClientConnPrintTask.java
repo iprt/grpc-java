@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 /**
  * ClientConnPrintTask
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Component

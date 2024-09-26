@@ -10,7 +10,7 @@ import org.iproute.grpc.boot.proto.context.Address;
 /**
  * ServerConn
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @AllArgsConstructor
 @NoArgsConstructor

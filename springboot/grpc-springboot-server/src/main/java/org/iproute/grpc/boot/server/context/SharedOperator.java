@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * SharedOperator
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 public interface SharedOperator {
 

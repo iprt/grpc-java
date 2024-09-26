@@ -13,7 +13,7 @@ import java.net.InetSocketAddress;
 /**
  * MonitoringServerTransportFilter
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @RequiredArgsConstructor
 @Slf4j

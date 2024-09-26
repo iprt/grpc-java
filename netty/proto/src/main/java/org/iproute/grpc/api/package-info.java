@@ -1,6 +1,6 @@
 /**
  * package-info
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 package org.iproute.grpc.api;

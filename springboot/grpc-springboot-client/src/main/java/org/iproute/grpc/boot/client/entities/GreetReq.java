@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * GreetReq
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @AllArgsConstructor
 @NoArgsConstructor

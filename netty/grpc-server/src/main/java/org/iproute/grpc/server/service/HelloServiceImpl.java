@@ -9,7 +9,7 @@ import org.iproute.grpc.api.HelloServiceGrpc;
 /**
  * HelloServiceImpl 业务处理
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Slf4j
 public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {

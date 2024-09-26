@@ -13,7 +13,7 @@ import java.util.Objects;
 /**
  * Address
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @AllArgsConstructor
 @NoArgsConstructor

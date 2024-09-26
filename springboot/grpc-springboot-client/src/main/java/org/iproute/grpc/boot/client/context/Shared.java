@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * Shared
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Repository
 @Getter

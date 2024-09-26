@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * ProtoConfig
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @ComponentScan
 public class ProtoConfig {

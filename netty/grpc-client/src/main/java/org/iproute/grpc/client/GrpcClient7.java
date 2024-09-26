@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * GrpcClient7
  * <p>
  * FutureStub
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Slf4j
 public class GrpcClient7 {

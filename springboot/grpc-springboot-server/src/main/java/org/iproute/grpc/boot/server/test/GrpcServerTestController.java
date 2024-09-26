@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * GrpcServerTestController
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RestController

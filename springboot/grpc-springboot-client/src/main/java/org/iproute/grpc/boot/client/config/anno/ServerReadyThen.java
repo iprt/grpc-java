@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * ServerReadyThen
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.METHOD})

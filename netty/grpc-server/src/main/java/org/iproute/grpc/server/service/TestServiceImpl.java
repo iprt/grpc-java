@@ -8,7 +8,7 @@ import org.iproute.grpc.api.TestServiceGrpc;
 /**
  * TestServiceImpl
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Slf4j
 public class TestServiceImpl extends TestServiceGrpc.TestServiceImplBase {

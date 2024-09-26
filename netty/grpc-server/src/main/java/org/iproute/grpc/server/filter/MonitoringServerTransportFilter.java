@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * MonitoringServerTransportFilter
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Slf4j
 public class MonitoringServerTransportFilter extends ServerTransportFilter {

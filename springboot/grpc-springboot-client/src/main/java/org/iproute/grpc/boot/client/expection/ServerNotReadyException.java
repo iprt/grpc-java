@@ -3,7 +3,7 @@ package org.iproute.grpc.boot.client.expection;
 /**
  * ServerNotReadyException
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 public class ServerNotReadyException extends RuntimeException {
     private static final String MSG = "Grpc Server Not Ready";

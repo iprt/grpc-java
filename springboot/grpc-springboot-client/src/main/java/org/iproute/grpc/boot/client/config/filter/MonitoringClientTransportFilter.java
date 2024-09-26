@@ -1,4 +1,4 @@
-package org.iproute.grpc.boot.client.filter;
+package org.iproute.grpc.boot.client.config.filter;
 
 import io.grpc.Attributes;
 import io.grpc.ClientTransportFilter;
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * MonitoringClientTransportFilter
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Slf4j

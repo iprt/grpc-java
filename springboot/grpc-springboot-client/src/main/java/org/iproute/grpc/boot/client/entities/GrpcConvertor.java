@@ -3,7 +3,7 @@ package org.iproute.grpc.boot.client.entities;
 /**
  * MsgConvertor
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 public interface GrpcConvertor<To> {
     default To convert() {

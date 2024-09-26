@@ -6,16 +6,16 @@ import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.client.channelfactory.GrpcChannelConfigurer;
 import net.devh.boot.grpc.client.interceptor.GrpcGlobalClientInterceptor;
+import org.iproute.grpc.boot.client.config.filter.MonitoringClientTransportFilter;
+import org.iproute.grpc.boot.client.config.interceptor.GrpcConnectionClientInterceptor;
 import org.iproute.grpc.boot.client.context.SharedOperator;
-import org.iproute.grpc.boot.client.filter.MonitoringClientTransportFilter;
-import org.iproute.grpc.boot.client.interceptor.GrpcConnectionClientInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
  * GrpcConfig
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Configuration
 @Slf4j

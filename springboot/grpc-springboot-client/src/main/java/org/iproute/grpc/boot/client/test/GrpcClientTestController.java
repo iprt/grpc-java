@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 /**
  * GrpcClientTestController
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RestController

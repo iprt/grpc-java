@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 /**
  * EmptyCronTaskService
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Service
 public class EmptyCronTask extends AbstractCronTask {

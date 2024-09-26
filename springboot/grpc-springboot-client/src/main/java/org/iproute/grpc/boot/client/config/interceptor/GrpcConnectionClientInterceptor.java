@@ -1,4 +1,4 @@
-package org.iproute.grpc.boot.client.interceptor;
+package org.iproute.grpc.boot.client.config.interceptor;
 
 import io.grpc.CallOptions;
 import io.grpc.Channel;
@@ -17,7 +17,7 @@ import java.util.Objects;
 /**
  * GrpcConnectionClientInterceptor
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @RequiredArgsConstructor
 @Slf4j

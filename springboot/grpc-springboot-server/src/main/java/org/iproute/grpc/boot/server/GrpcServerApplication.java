@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * GrpcServerApplication
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @SpringBootApplication
 public class GrpcServerApplication {

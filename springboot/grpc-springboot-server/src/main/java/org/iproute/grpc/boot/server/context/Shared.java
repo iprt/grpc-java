@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Shared
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Repository
 @Getter

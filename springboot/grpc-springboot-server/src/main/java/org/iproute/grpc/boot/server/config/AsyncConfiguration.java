@@ -11,7 +11,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 /**
  * AsyncConfiguration
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @EnableScheduling
 @Configuration

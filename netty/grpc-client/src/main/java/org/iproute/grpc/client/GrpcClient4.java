@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * GrpcClient4
  * <p>
  * client 2 server stream | 关键 newStub
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Slf4j
 public class GrpcClient4 {

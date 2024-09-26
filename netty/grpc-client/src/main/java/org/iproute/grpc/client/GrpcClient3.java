@@ -13,7 +13,7 @@ import java.util.Iterator;
  * <p>
  * client 2 server stream | newBlockingStub
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Slf4j
 public class GrpcClient3 {

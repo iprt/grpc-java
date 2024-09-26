@@ -11,7 +11,7 @@ import org.iproute.grpc.api.HelloServiceGrpc;
  * <p>
  * newBlockingStub
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Slf4j
 public class GrpcClient1 {

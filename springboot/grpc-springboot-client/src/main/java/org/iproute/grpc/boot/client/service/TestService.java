@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 /**
  * TestService
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 public interface TestService {
     /**

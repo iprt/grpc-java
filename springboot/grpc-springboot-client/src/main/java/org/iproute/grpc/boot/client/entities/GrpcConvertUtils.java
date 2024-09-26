@@ -5,7 +5,7 @@ import org.iproute.grpc.multi.GreetResponse;
 /**
  * GrpcConvertUtils
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 public class GrpcConvertUtils {
 

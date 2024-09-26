@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * </p>
  * client_stream to server
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Slf4j
 public class GrpcClient5 {

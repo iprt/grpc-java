@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * CronTaskService
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 public abstract class AbstractCronTask implements CronTask, InitializingBean {
 

@@ -10,6 +10,6 @@ spring:
 
 logging:
   level:
-    org.iproute.grpc.boot.client.task.hb.org.iproute.grpc.boot.client.task.hb.HeartBeatRunnable: debug
-    org.iproute.grpc.boot.client.filter.MonitoringClientTransportFilter: debug
-    org.iproute.grpc.boot.client.interceptor.GrpcConnectionClientInterceptor: debug
+    org.iproute.grpc.boot.client.service.HeartBeatService.DefaultHeartBeatService: debug
+    org.iproute.grpc.boot.client.filter.org.iproute.grpc.boot.client.config.filter.MonitoringClientTransportFilter: debug
+    org.iproute.grpc.boot.client.interceptor.org.iproute.grpc.boot.client.config.interceptor.GrpcConnectionClientInterceptor: debug

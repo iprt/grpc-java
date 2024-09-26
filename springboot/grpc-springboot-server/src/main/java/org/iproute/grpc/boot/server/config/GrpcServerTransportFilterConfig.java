@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  * <p>
  * {@link GrpcServerFactoryAutoConfiguration#shadedNettyGrpcServerFactory}
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Configuration
 @Slf4j

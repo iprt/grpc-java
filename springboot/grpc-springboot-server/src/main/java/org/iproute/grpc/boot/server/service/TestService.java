@@ -9,7 +9,7 @@ import org.iproute.grpc.api.TestProto;
 /**
  * TestService
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @GrpcService
 @Slf4j

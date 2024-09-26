@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * MultiService
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @GrpcService
 @Slf4j

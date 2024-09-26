@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * GrpcConnectionCountInterceptor
  *
- * @author devops@kubectl.net
+ * @author tech@intellij.io
  */
 @Slf4j
 public class GrpcConnectionCountInterceptor implements ServerInterceptor {
