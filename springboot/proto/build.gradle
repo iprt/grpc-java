@@ -27,6 +27,8 @@ dependencies {
 
     compileOnly "org.apache.tomcat:annotations-api:6.0.53"
 
+    compileOnly 'org.jetbrains:annotations:24.1.0'
+
     // examples/advanced need this for JsonFormat
     api "com.google.protobuf:protobuf-java-util:${protobufVersion}"
 
@@ -35,8 +37,8 @@ dependencies {
     implementation "org.springframework.boot:spring-boot:$spring_boot_version"
 
     api 'org.slf4j:slf4j-api:1.7.36'
-    api 'ch.qos.logback:logback-classic:1.4.14'
-    api 'ch.qos.logback:logback-core:1.4.14'
+    api 'ch.qos.logback:logback-classic:1.5.13'
+    api 'ch.qos.logback:logback-core:1.5.13'
 }
 
 
