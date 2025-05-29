@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="GrpcServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <module name="grpc-java.springboot.grpc-springboot-server.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="org.iproute.grpc.boot.server.GrpcServerApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
